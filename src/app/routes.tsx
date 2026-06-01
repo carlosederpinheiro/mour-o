@@ -19,4 +19,6 @@ export const router = createBrowserRouter([
     path: "/dashboard",
     Component: Dashboard,
   }
-]);
+], {
+  basename: import.meta.env.BASE_URL
+});
