@@ -1,5 +1,16 @@
 import { Users } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
+import paula from '../../assets/equipe/paula.png';
+import carlos from '../../assets/equipe/carlos.png';
+import scarllet from '../../assets/equipe/scarllet.png';
+import bianca from '../../assets/equipe/bianca.png';
+import mourao from '../../assets/equipe/mourao.png';
+import mouraojr from '../../assets/equipe/mouraojr.png';
+import igo from '../../assets/equipe/igo.png';
+import meire from '../../assets/equipe/meire.png';
+import paulo from '../../assets/equipe/paulo.png';
+
+
 
 const getInitials = (name: string) => {
   const parts = name.trim().split(' ');
@@ -15,55 +26,55 @@ export function Team() {
       name: 'Bianca Mourão',
       role: 'Diretora Operacional',
       description: 'Bacharel em Economia pela Universidade Federal do Amazonas, com pós-Graduação em Direito Tributário e Contabilidade pela IPOG e Mestranda pelo Instituto Brasileiro de Ensino, Desenvolvimento e Pesquisa (IDP).',
-      image: 'https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/18423895/37289_518571.jpg'
+      image: bianca
     },
     {
       name: 'Assis Mourão',
       role: 'Consultor Sênior',
       description: 'Graduado em Ciências Econômicas pela Universidade Candido Mendes do Rio de Janeiro (1968) e Mestrado em Desenvolvimento Regional na área de concentração em Desenvolvimento Regional na Amazônia.',
-      image: 'https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/18423895/145096_771248.jpg'
+      image: mourao
     },
     {
       name: 'Assis Mourão Junior',
       role: 'Consultor Sênior',
       description: 'Graduado em Economia pelo Centro Universitário do Norte, Mestre em Engenharia de Processos pela Universidade Federal do Pará (UFPA) e Doutorando em Administração pela Pontifícia Universidade Católica do Paraná (PUC-PR).',
-      image: 'https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/18423895/224862_69242.jpg'
-    },
-    {
-      name: 'Paulo Mourão',
-      role: 'Associado Junior',
-      description: 'Estudante de Economia pela X',
-      image: 'https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/18423895/582091_127750.jpg'
-    },
+      image: mouraojr
+    },    
     {
       name: 'Igo Viana',
       role: 'Gerente de Projetos Industriais/Tributários',
       description: 'Economista pela Universidade Federal do Amazonas (UFAM), especializado em incentisvos fiscais na ZFM, com mais de 10 anos de experiência e mais de 200 projetos aprovados entre os órgãos Sudam, Sedecti e Suframa.',
-      image: 'https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/18423895/889188_109413.jpg'
+      image: igo
     },
     {
       name: 'Lucimere Amorim',
       role: 'Gerente Fiscal Contábil',
       description: 'Apoio técnico e administrativo aos projetos da consultoria',
-      image: 'https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/18423895/960900_252755.jpg'
+      image: meire
     },
     {
       name: 'Carlos Eder',
       role: 'Arquiteto de Sistemas',
-      description: 'Estudante de Engenharia da Computação pela Faculdade Matias Machline',
-      image: ''
+      description: 'Técnico pela Fundação Matias Machline, Licenciando em Letras, Língua e Literatura Portuguesa pela Universidade Federal do Amazonas e Bacharelando em Engenharia da Computação pela Faculdade Matias Machline.',
+      image: carlos
+    },
+    {
+      name: 'Paulo Mourão',
+      role: 'Associado Junior',
+      description: 'Bacharelando em Economia pela Universidade Estácio de Sá.',
+      image: paulo
     },
     {
       name: 'Paula Marinho',
       role: 'Associada Junior',
-      description: 'Estudante de Economia pela X',
-      image: ''
+      description: 'Bacharelanda em Economia pela Universidade Estácio de Sá.',
+      image: paula
     },
     {
-      name: 'Scarllet',
+      name: 'Scarlett Silva',
       role: 'Estagiária de Contabilidade',
-      description: 'Estudante de Ciências Contábeis pela X',
-      image: ''
+      description: 'Bacharelanda em Contabilidade pela Universidade Nilton Lins.',
+      image: scarllet
     }
   ];
 
@@ -98,9 +109,9 @@ export function Team() {
                 <div className="absolute inset-0 bg-gradient-to-t from-secondary to-transparent opacity-80 pointer-events-none"></div>
               </div>
               <div className="p-6 relative -mt-16 flex-grow flex flex-col">
-                <div className="mb-4 min-h-[5.5rem]">
-                  <h3 className="text-xl font-semibold text-white mb-1">{member.name}</h3>
-                  <div className="inline-block px-3 py-1 bg-accent/20 text-accent rounded-full text-sm font-medium border border-accent/30">
+                <div className="mb-3 flex flex-col items-start gap-1">
+                  <h3 className="text-xl font-semibold text-white">{member.name}</h3>
+                  <div className="inline-block px-3 py-1 bg-accent/20 text-accent rounded-full text-sm font-medium border border-accent/30 mt-1">
                     {member.role}
                   </div>
                 </div>

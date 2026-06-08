@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router';
+import logoWhite from '../../assets/icon192_white.png';
 
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -71,7 +72,7 @@ export function Navigation() {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center gap-3">
             <img 
-              src="/icon192_white.png" 
+              src={logoWhite} 
               alt="Logo Mourão" 
               className="w-12 h-12 cursor-pointer" 
               onClick={() => handleNavigation('home')} 
@@ -133,16 +134,6 @@ export function Navigation() {
               Contato
               <span className={`absolute bottom-0 left-0 h-0.5 bg-accent transition-all group-hover:w-full ${location.pathname === '/' && activeSection === 'contato' ? 'w-full' : 'w-0'}`}></span>
             </button>
-            <button
-              onClick={() => {
-                navigate('/portal');
-                window.scrollTo(0, 0);
-                setIsMenuOpen(false);
-              }}
-              className="px-5 py-2 bg-accent text-primary font-bold rounded-lg hover:bg-white transition-colors"
-            >
-              Portal
-            </button>
           </div>
 
           {/* Mobile menu button */}
@@ -198,16 +189,6 @@ export function Navigation() {
               className={`block w-full text-left px-4 py-3 rounded-md transition-colors font-medium ${location.pathname === '/' && activeSection === 'contato' ? 'bg-accent/15 text-accent font-semibold' : 'text-white hover:bg-accent/20 hover:text-accent'}`}
             >
               Contato
-            </button>
-            <button
-              onClick={() => {
-                navigate('/portal');
-                window.scrollTo(0, 0);
-                setIsMenuOpen(false);
-              }}
-              className="block w-full text-center px-4 py-3 mt-2 bg-accent text-primary font-bold rounded-md hover:bg-white transition-colors"
-            >
-              Acessar Portal
             </button>
           </div>
         )}
