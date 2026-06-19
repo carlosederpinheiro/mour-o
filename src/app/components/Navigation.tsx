@@ -100,11 +100,11 @@ export function Navigation() {
               <span className={`absolute bottom-0 left-0 h-0.5 bg-accent transition-all group-hover:w-full ${location.pathname === '/' && activeSection === 'servicos' ? 'w-full' : 'w-0'}`}></span>
             </button>
             <button
-              onClick={() => handleNavigation('zona-franca')}
-              className={`text-white hover:text-accent transition-colors relative group font-medium ${location.pathname === '/' && activeSection === 'zona-franca' ? 'text-accent' : ''}`}
+              onClick={() => handleNavigation('cursos')}
+              className={`text-white hover:text-accent transition-colors relative group font-medium ${location.pathname === '/' && activeSection === 'cursos' ? 'text-accent' : ''}`}
             >
-              Zona Franca
-              <span className={`absolute bottom-0 left-0 h-0.5 bg-accent transition-all group-hover:w-full ${location.pathname === '/' && activeSection === 'zona-franca' ? 'w-full' : 'w-0'}`}></span>
+              Cursos
+              <span className={`absolute bottom-0 left-0 h-0.5 bg-accent transition-all group-hover:w-full ${location.pathname === '/' && activeSection === 'cursos' ? 'w-full' : 'w-0'}`}></span>
             </button>
             <button
               onClick={() => handleNavigation('equipe')}
@@ -114,13 +114,6 @@ export function Navigation() {
               <span className={`absolute bottom-0 left-0 h-0.5 bg-accent transition-all group-hover:w-full ${location.pathname === '/' && activeSection === 'equipe' ? 'w-full' : 'w-0'}`}></span>
             </button>
             <button
-              onClick={() => handleNavigation('sobre')}
-              className={`text-white hover:text-accent transition-colors relative group font-medium ${location.pathname === '/' && activeSection === 'sobre' ? 'text-accent' : ''}`}
-            >
-              Sobre
-              <span className={`absolute bottom-0 left-0 h-0.5 bg-accent transition-all group-hover:w-full ${location.pathname === '/' && activeSection === 'sobre' ? 'w-full' : 'w-0'}`}></span>
-            </button>
-            <button
               onClick={handleBlogNavigation}
               className={`text-white hover:text-accent transition-colors relative group font-medium ${location.pathname === '/blog' ? 'text-accent' : ''}`}
             >
@@ -128,11 +121,14 @@ export function Navigation() {
               <span className={`absolute bottom-0 left-0 h-0.5 bg-accent transition-all group-hover:w-full ${location.pathname === '/blog' ? 'w-full' : 'w-0'}`}></span>
             </button>
             <button
-              onClick={() => handleNavigation('contato')}
-              className={`text-white hover:text-accent transition-colors relative group font-medium ${location.pathname === '/' && activeSection === 'contato' ? 'text-accent' : ''}`}
+              onClick={() => {
+                navigate('/portal/login');
+                window.scrollTo(0, 0);
+                setIsMenuOpen(false);
+              }}
+              className="px-5 py-2 bg-accent text-primary font-bold rounded-lg hover:bg-white transition-colors"
             >
-              Contato
-              <span className={`absolute bottom-0 left-0 h-0.5 bg-accent transition-all group-hover:w-full ${location.pathname === '/' && activeSection === 'contato' ? 'w-full' : 'w-0'}`}></span>
+              Portal do Aluno
             </button>
           </div>
 
@@ -161,10 +157,10 @@ export function Navigation() {
               Serviços
             </button>
             <button
-              onClick={() => handleNavigation('zona-franca')}
-              className={`block w-full text-left px-4 py-3 rounded-md transition-colors font-medium ${location.pathname === '/' && activeSection === 'zona-franca' ? 'bg-accent/15 text-accent font-semibold' : 'text-white hover:bg-accent/20 hover:text-accent'}`}
+              onClick={() => handleNavigation('cursos')}
+              className={`block w-full text-left px-4 py-3 rounded-md transition-colors font-medium ${location.pathname === '/' && activeSection === 'cursos' ? 'bg-accent/15 text-accent font-semibold' : 'text-white hover:bg-accent/20 hover:text-accent'}`}
             >
-              Zona Franca
+              Cursos
             </button>
             <button
               onClick={() => handleNavigation('equipe')}
@@ -173,22 +169,20 @@ export function Navigation() {
               Equipe
             </button>
             <button
-              onClick={() => handleNavigation('sobre')}
-              className={`block w-full text-left px-4 py-3 rounded-md transition-colors font-medium ${location.pathname === '/' && activeSection === 'sobre' ? 'bg-accent/15 text-accent font-semibold' : 'text-white hover:bg-accent/20 hover:text-accent'}`}
-            >
-              Sobre
-            </button>
-            <button
               onClick={handleBlogNavigation}
               className={`block w-full text-left px-4 py-3 rounded-md transition-colors font-medium ${location.pathname === '/blog' ? 'bg-accent/15 text-accent font-semibold' : 'text-white hover:bg-accent/20 hover:text-accent'}`}
             >
               Blog
             </button>
             <button
-              onClick={() => handleNavigation('contato')}
-              className={`block w-full text-left px-4 py-3 rounded-md transition-colors font-medium ${location.pathname === '/' && activeSection === 'contato' ? 'bg-accent/15 text-accent font-semibold' : 'text-white hover:bg-accent/20 hover:text-accent'}`}
+              onClick={() => {
+                navigate('/portal/login');
+                window.scrollTo(0, 0);
+                setIsMenuOpen(false);
+              }}
+              className="block w-full text-center px-4 py-3 mt-2 bg-accent text-primary font-bold rounded-md hover:bg-white transition-colors"
             >
-              Contato
+              Portal do Aluno
             </button>
           </div>
         )}
