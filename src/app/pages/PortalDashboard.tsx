@@ -234,7 +234,7 @@ export function PortalDashboard() {
                 <p className="text-3xl font-bold text-gray-900 mb-6">R$ {Number(course.valor || 0).toFixed(2).replace('.', ',')}</p>
                 
                 <p className="text-sm text-gray-500 mb-1">Chave Pix (CNPJ)</p>
-                <p className="text-lg font-mono text-gray-800 font-semibold mb-4 select-all">00.000.000/0001-00</p>
+                <p className="text-lg font-mono text-gray-800 font-semibold mb-4 select-all">32.705.355/0001-72</p>
                 
                 <p className="text-sm text-gray-500 mb-1">Nome</p>
                 <p className="text-gray-800 font-medium">Mourão Consultoria Econômica Ltda</p>
