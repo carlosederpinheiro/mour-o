@@ -51,15 +51,33 @@ export function PortalDashboard() {
         return;
       }
       
-      const { data: profile } = await supabase
+      let { data: profile } = await supabase
         .from('portal_profiles')
         .select('*')
         .eq('id', session.user.id)
-        .single();
+        .maybeSingle();
         
       if (!profile) {
-        navigate('/portal/login');
-        return;
+        // Tenta recriar o perfil caso tenha sido apagado sem querer no Supabase
+        const { data: newProfile, error: insertError } = await supabase
+          .from('portal_profiles')
+          .insert({
+            id: session.user.id,
+            nome: session.user.user_metadata?.nome || 'Usuário',
+            email: session.user.email,
+            telefone: session.user.user_metadata?.telefone || '',
+            role: session.user.user_metadata?.role || 'aluno'
+          })
+          .select()
+          .maybeSingle();
+          
+        if (insertError || !newProfile) {
+          toast.error('Erro ao recuperar perfil. Contate o suporte.');
+          supabase.auth.signOut();
+          navigate('/portal/login');
+          return;
+        }
+        profile = newProfile;
       }
 
       await loadData(session.user.id, profile);

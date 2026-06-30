@@ -30,7 +30,7 @@ export function PortalLogin() {
         .from('portal_profiles')
         .select('role')
         .eq('id', data.user.id)
-        .single();
+        .maybeSingle();
 
       toast.success('Login realizado com sucesso!');
       
