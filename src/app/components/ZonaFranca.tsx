@@ -1,32 +1,28 @@
-import { Shield, Percent, TrendingUp, Banknote } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 
 export function ZonaFranca() {
   const benefits = [
     {
-      icon: <Percent className="w-8 h-8 text-accent" />,
-      image: "https://www.gov.br/suframa/pt-br/assuntos/noticias/suframa-vai-esclarecer-mudancas-nos-projetos-industriais/suframasite.jpg",
+      image: "https://enamvoamthbfimtsvgqa.supabase.co/storage/v1/object/public/Staff/suframa.png",
       title: 'Projeto SUFRAMA',
       description: 'Elaboração de projetos técnicos e econômicos para implantação de indústrias e concessão de incentivos federais chaves na Superintendência da Zona Franca de Manaus.',
-      highlights: ['Isenção ou redução do II (Imposto de Importação)', 'Isenção total do IPI (Imposto sobre Prod. Industrial)', 'Desoneração e redução de PIS/COFINS', 'Aprovação de pleito para até 2 produtos']
+      highlights: ['Isenção ou redução do II (Imposto de Importação)', 'Isenção total do IPI (Imposto sobre Prod. Industrial)', 'Desoneração e redução de PIS/COFINS', 'Acompanhamento e aprovação junto ao CAS/SUFRAMA']
     },
     {
-      icon: <Shield className="w-8 h-8 text-accent" />,
-      image: "https://amazonasnews.com.br/wp-content/uploads/2026/01/Sedecti_PCCR-Foto_BrunoLeao-1024x576-1-860x484.jpg",
+      image: "https://enamvoamthbfimtsvgqa.supabase.co/storage/v1/object/public/Staff/sedecti.png",
       title: 'Projeto SEDECTI',
       description: 'Projetos de viabilidade para obtenção e aprovação de incentivos fiscais estaduais junto à Secretaria de Estado do Amazonas (SEDECTI) com segurança jurídica.',
-      highlights: ['Redução significativa do ICMS do Livro de Apuração', 'Projetos técnicos e econômicos estruturados', 'Apoio e aprovação oficial junto à SEDECTI', 'Benefício aplicável para até 2 produtos']
+      highlights: ['Redução significativa do ICMS do Livro de Apuração', 'Projetos técnicos e econômicos estruturados', 'Apoio e aprovação oficial junto à SEDECTI', 'Aprovação de projetos técnicos perante o CODAM']
     },
     {
-      icon: <Banknote className="w-8 h-8 text-accent" />,
-      image: "https://amazonasatual.com.br/wp-content/uploads/2024/06/Fabricas.jpeg",
+      image: "https://enamvoamthbfimtsvgqa.supabase.co/storage/v1/object/public/Staff/sudam_sudene.png",
+      imagePosition: 'object-top',
       title: 'Projeto SUDAM e SUDENE',
       description: 'Elaboração de projetos de viabilidade técnica, econômica e financeira para obtenção de benefícios federais de desenvolvimento regional na Amazônia e Nordeste.',
-      highlights: ['Redução de 75% do IRPJ (Imposto de Renda P. Jurídica)', 'Reinvestimento de 30% do IRPJ para compra de maquinário', 'Aquisição de novas máquinas e equipamentos industriais', 'Benefício aplicável para até 2 produtos']
+      highlights: ['Redução de 75% do IRPJ (Imposto de Renda P. Jurídica)', 'Reinvestimento de 30% do IRPJ para compra de maquinário', 'Aquisição de novas máquinas e equipamentos industriais', 'Obtenção de Laudo Constitutivo perante a Receita Federal']
     },
     {
-      icon: <TrendingUp className="w-8 h-8 text-accent" />,
-      image: "https://images.unsplash.com/photo-1521790797524-b2497295b8a0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGNvbXBsaWFuY2UlMjBoYW5kc2hha2V8ZW58MXx8fHwxNzc4NjE0ODM4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      image: "https://enamvoamthbfimtsvgqa.supabase.co/storage/v1/object/public/Staff/estudos.png",
       title: 'Estudo de Competitividade',
       description: 'Desenvolvimento de Estudos de Competitividade para obtenção de incentivo fiscal estadual adicional concedido pelo Governo do Estado do Amazonas.',
       highlights: ['Isenção de FTI e UEA por 9 exercícios fiscais', 'Economia de 1,5% sobre crédito estímulo de 100% ICMS', 'Economia de 1% sobre valor de Insumos Nacionais', 'Economia de 2% sobre valor de Insumos Importados']
@@ -45,7 +41,8 @@ export function ZonaFranca() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* VERSÃO DESKTOP (100% INTACTA) */}
+        <div className="hidden md:grid md:grid-cols-2 gap-8">
           {benefits.map((benefit, index) => (
             <div
               key={index}
@@ -55,11 +52,8 @@ export function ZonaFranca() {
                 <ImageWithFallback
                   src={benefit.image}
                   alt={benefit.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  className={`w-full h-full object-cover ${benefit.imagePosition || 'object-center'} group-hover:scale-105 transition-transform duration-700`}
                 />
-                <div className="absolute top-4 left-4 bg-primary p-3 rounded-xl shadow-lg border border-accent/20 backdrop-blur-md">
-                  {benefit.icon}
-                </div>
               </div>
               
               <div className="p-8 flex flex-col flex-grow">
@@ -91,6 +85,69 @@ export function ZonaFranca() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* VERSÃO MOBILE: Swipe Horizontal de Cartões */}
+        <div className="md:hidden">
+          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-6 no-scrollbar -mx-4">
+            {benefits.map((benefit, index) => (
+              <div
+                key={index}
+                className="w-[85vw] max-w-[340px] shrink-0 snap-center bg-secondary rounded-2xl overflow-hidden border border-border shadow-xl flex flex-col justify-between"
+              >
+                <div className="relative h-44 w-full overflow-hidden">
+                  <ImageWithFallback
+                    src={benefit.image}
+                    alt={benefit.title}
+                    className={`w-full h-full object-cover ${benefit.imagePosition || 'object-center'}`}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-secondary via-transparent to-transparent"></div>
+                </div>
+
+                <div className="p-5 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h4 className="text-xl font-bold text-white mb-2 leading-tight">
+                      {benefit.title}
+                    </h4>
+                    <p className="text-white/80 text-xs sm:text-sm leading-relaxed mb-4">
+                      {benefit.description}
+                    </p>
+
+                    <div className="bg-primary/40 rounded-xl p-3.5 border border-white/5 mb-5">
+                      <p className="text-accent text-[11px] font-bold uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                        Diferenciais
+                      </p>
+                      <ul className="space-y-2">
+                        {benefit.highlights.map((highlight, idx) => (
+                          <li key={idx} className="flex items-start gap-2 text-xs text-white/90">
+                            <span className="text-accent font-bold mt-0.5">•</span>
+                            <span className="leading-tight">{highlight}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={() => window.open(`https://wa.me/5592992905623?text=${encodeURIComponent('Olá, gostaria de entender a viabilidade do ' + benefit.title)}`, '_blank')}
+                    className="w-full py-3 px-4 bg-accent text-primary font-bold text-xs sm:text-sm rounded-xl hover:bg-white transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-md"
+                  >
+                    Consultar este Pleito
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex items-center justify-center gap-2 pt-2 text-xs text-white/50">
+            <span>← Deslize para ver todos os projetos da ZFM →</span>
+          </div>
         </div>
 
         <div className="mt-20 bg-secondary border border-accent/20 rounded-2xl p-10 text-center relative overflow-hidden">

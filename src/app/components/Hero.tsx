@@ -27,25 +27,26 @@ export function Hero() {
             Especialistas em consultoria econômica, assessoria tributária e viabilização de incentivos fiscais na Zona Franca de Manaus com foco em conformidade e alta performance.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
             <button
               onClick={() => scrollToSection('servicos')}
-              className="group px-8 py-4 bg-accent text-primary rounded-lg hover:bg-accent/90 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl"
+              className="w-full sm:w-auto group px-8 py-3.5 sm:py-4 bg-accent text-primary font-bold rounded-xl hover:bg-accent/90 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl cursor-pointer"
             >
               Conheça nossos serviços
-              <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
+              <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
             </button>
 
             <button
               onClick={handleWhatsAppClick}
-              className="px-8 py-4 bg-transparent border-2 border-accent text-accent rounded-lg hover:bg-accent hover:text-primary transition-all duration-300 flex items-center gap-2"
+              className="w-full sm:w-auto px-8 py-3.5 sm:py-4 bg-transparent border-2 border-accent text-accent font-bold rounded-xl hover:bg-accent hover:text-primary transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
             >
-              <MessageCircle size={20} />
+              <MessageCircle size={18} />
               Fale conosco
             </button>
           </div>
 
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          {/* MÉTRICAS VERSÃO DESKTOP (100% INTACTA) */}
+          <div className="hidden md:grid md:grid-cols-3 gap-8 text-center mt-16">
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
               <div className="text-3xl font-semibold mb-2">20+</div>
               <div className="text-white/80">Anos de experiência</div>
@@ -57,6 +58,22 @@ export function Hero() {
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
               <div className="text-3xl font-semibold mb-2">300+</div>
               <div className="text-white/80">Projetos Aprovados</div>
+            </div>
+          </div>
+
+          {/* MÉTRICAS VERSÃO MOBILE (Linha única compacta na primeira dobra) */}
+          <div className="md:hidden grid grid-cols-3 gap-2 mt-8 text-center">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 border border-white/5">
+              <div className="text-xl font-bold text-accent mb-0.5">20+</div>
+              <div className="text-[10px] text-white/80 leading-tight">Anos de Mercado</div>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 border border-white/5">
+              <div className="text-xl font-bold text-accent mb-0.5">TOP 10</div>
+              <div className="text-[10px] text-white/80 leading-tight">CORECON/AM</div>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 border border-white/5">
+              <div className="text-xl font-bold text-accent mb-0.5">300+</div>
+              <div className="text-[10px] text-white/80 leading-tight">Projetos</div>
             </div>
           </div>
         </div>

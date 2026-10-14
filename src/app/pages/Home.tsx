@@ -13,7 +13,7 @@ export function Home() {
     <>
       <Hero />
       <Services />
-      <Cursos />
+      {/* <Cursos /> - Temporariamente adormecido */}
       <ZonaFranca />
       <Coworking />
       <Team />

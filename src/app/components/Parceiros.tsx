@@ -67,7 +67,8 @@ export function Parceiros() {
           </p>
         </div>
         
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
+        {/* VERSÃO DESKTOP (100% INTACTA) */}
+        <div className="hidden md:grid md:grid-cols-4 gap-8 items-center justify-items-center">
           {partners.map((partner, index) => (
             <div 
               key={index} 
@@ -88,6 +89,45 @@ export function Parceiros() {
               )}
             </div>
           ))}
+        </div>
+
+        {/* VERSÃO MOBILE: Marquee Ticker Infinito (2 Faixas Contínuas) */}
+        <div className="md:hidden relative overflow-hidden py-2 -mx-4">
+          {/* Efeito de fade nas bordas */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-primary to-transparent z-10"></div>
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-primary to-transparent z-10"></div>
+
+          {/* Linha 1 */}
+          <div className="animate-marquee-infinite flex gap-3 mb-3">
+            {[...partners.slice(0, 13), ...partners.slice(0, 13)].map((partner, index) => (
+              <div 
+                key={index}
+                className="w-28 h-16 bg-white rounded-xl p-2.5 flex items-center justify-center shadow-sm shrink-0"
+              >
+                <img 
+                  src={partner.logo} 
+                  alt={partner.name} 
+                  className="max-w-full max-h-full object-contain"
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Linha 2 (sentido reverso) */}
+          <div className="animate-marquee-infinite-reverse flex gap-3">
+            {[...partners.slice(13), ...partners.slice(13)].map((partner, index) => (
+              <div 
+                key={index}
+                className="w-28 h-16 bg-white rounded-xl p-2.5 flex items-center justify-center shadow-sm shrink-0"
+              >
+                <img 
+                  src={partner.logo} 
+                  alt={partner.name} 
+                  className="max-w-full max-h-full object-contain"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

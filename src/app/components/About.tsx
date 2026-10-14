@@ -65,7 +65,8 @@ export function About() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        {/* VERSÃO DESKTOP (100% INTACTA) */}
+        <div className="hidden md:grid md:grid-cols-3 gap-8 mb-16">
           {achievements.map((achievement, index) => (
             <div
               key={index}
@@ -102,7 +103,43 @@ export function About() {
           ))}
         </div>
 
-        <div className="bg-primary rounded-xl p-10 border border-border shadow-lg">
+        {/* VERSÃO MOBILE: Swipe Horizontal de Conquistas */}
+        <div className="md:hidden mb-12">
+          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-6 no-scrollbar -mx-4">
+            {achievements.map((achievement, index) => (
+              <div
+                key={index}
+                className="w-[82vw] max-w-[300px] shrink-0 snap-center bg-primary border border-border rounded-2xl overflow-hidden shadow-xl flex flex-col"
+              >
+                {achievement.image && (
+                  <div className="relative h-44 w-full overflow-hidden">
+                    <img
+                      src={achievement.image}
+                      alt={achievement.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent"></div>
+                    <div className="absolute top-3 left-3 bg-secondary/90 p-2 rounded-xl border border-accent/20">
+                      {achievement.icon}
+                    </div>
+                  </div>
+                )}
+                <div className="p-5 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h4 className="text-lg font-bold text-white mb-2">{achievement.title}</h4>
+                    <p className="text-xs text-white/70 leading-relaxed">{achievement.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex items-center justify-center gap-2 pt-2 text-xs text-white/50">
+            <span>← Deslize para ver marcos históricos →</span>
+          </div>
+        </div>
+
+        <div className="bg-primary rounded-2xl p-6 sm:p-10 border border-border shadow-lg">
           <h3 className="text-2xl mb-8 text-center font-bold text-accent">Nossos Diferenciais</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
             {differentials.map((differential, index) => (

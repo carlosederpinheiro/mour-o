@@ -1,3 +1,48 @@
 @import './fonts.css';
 @import './tailwind.css';
 @import './theme.css';
+
+/* Utilitário para esconder barras de rolagem em carrosséis touch no celular */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Animações contínuas para o ticker/marquee mobile de parceiros */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-scroll-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee-infinite {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 32s linear infinite;
+}
+
+.animate-marquee-infinite-reverse {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll-reverse 32s linear infinite;
+}
+
+.animate-marquee-infinite:hover,
+.animate-marquee-infinite-reverse:hover {
+  animation-play-state: paused;
+}

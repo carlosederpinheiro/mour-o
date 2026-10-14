@@ -50,7 +50,8 @@ export function Coworking() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+            {/* FEATURES DESKTOP (100% INTACTA) */}
+            <div className="hidden sm:grid sm:grid-cols-2 gap-6 pt-4">
               {features.map((feature, index) => (
                 <div key={index} className="bg-primary/60 border border-white/5 p-6 rounded-2xl hover:border-accent/30 transition-all duration-300 hover:-translate-y-1">
                   <div className="bg-accent/10 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
@@ -64,10 +65,27 @@ export function Coworking() {
               ))}
             </div>
 
+            {/* FEATURES MOBILE (Grid 2x2 Compacto) */}
+            <div className="sm:hidden grid grid-cols-2 gap-2.5 pt-2">
+              {features.map((feature, index) => (
+                <div key={index} className="bg-primary/60 border border-white/5 p-3 rounded-xl flex flex-col justify-between">
+                  <div>
+                    <div className="bg-accent/10 w-8 h-8 rounded-lg flex items-center justify-center mb-2">
+                      {feature.icon}
+                    </div>
+                    <h4 className="text-xs font-bold mb-1 text-white">{feature.title}</h4>
+                    <p className="text-[10px] text-white/70 leading-tight">
+                      {feature.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
             <div className="pt-6">
               <button
                 onClick={() => window.open('https://wa.me/5592992905623', '_blank')}
-                className="px-8 py-4 bg-accent text-primary font-bold rounded-xl hover:bg-white hover:text-primary transition-all duration-300 inline-flex items-center gap-3 shadow-lg shadow-accent/20 hover:shadow-accent/40"
+                className="w-full sm:w-auto px-8 py-3.5 sm:py-4 bg-accent text-primary font-bold rounded-xl hover:bg-white hover:text-primary transition-all duration-300 inline-flex items-center justify-center gap-3 shadow-lg shadow-accent/20 hover:shadow-accent/40 cursor-pointer"
               >
                 Agendar Utilização do Espaço
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -1,4 +1,4 @@
-import { TrendingUp, FileText, Building2, Briefcase, Award, GraduationCap, ChevronLeft, ChevronRight } from 'lucide-react';
+import { TrendingUp, FileText, Building2, Briefcase, Award, GraduationCap, ChevronLeft, ChevronRight, Cpu } from 'lucide-react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -32,17 +32,24 @@ export function Services() {
   const services = [
     {
       icon: <TrendingUp className="w-8 h-8 text-accent" />,
-      title: 'Estudos de Viabilidade & PPB',
-      description: 'Elaboração de estudos econômicos para implantação de plantas fabris na Zona Franca de Manaus e fixação/alteração de Processo Produtivo Básico (PPB) junto a órgãos competentes.',
-      features: ['Estudo de viabilidade de implantação', 'Fixação e alteração de PPB', 'Análise comparativa de tributação', 'Aprovação de portarias interministeriais'],
+      title: 'Estudos de Viabilidade Econômica',
+      description: 'Modelagem e elaboração de estudos econômicos para implantação, diversificação, expansão e modernização de unidades industriais na Zona Franca de Manaus, com projeções financeiras e análise de retorno.',
+      features: ['Estudo de viabilidade de implantação e expansão', 'Modelagem econômico-financeira (VPL/TIR)', 'Dimensionamento de investimentos e mão de obra', 'Análise comparativa de tributação e retorno'],
       image: "https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/18423895/503030_235359.jpg"
+    },
+    {
+      icon: <Cpu className="w-8 h-8 text-accent" />,
+      title: 'Processo Produtivo Básico (PPB)',
+      description: 'Assessoria técnica regulatória para fixação, alteração e acompanhamento de etapas do Processo Produtivo Básico (PPB) junto a MDIC, MCTI e SUFRAMA, garantindo a fruição dos incentivos fiscais.',
+      features: ['Fixação e alteração de etapas do PPB', 'Aprovação de portarias interministeriais', 'Mapeamento de insumos e processos fabris', 'Defesa técnica e consultas aos ministérios'],
+      image: "https://enamvoamthbfimtsvgqa.supabase.co/storage/v1/object/public/Staff/bianca_denso.jpg"
     },
     {
       icon: <Building2 className="w-8 h-8 text-accent" />,
       title: 'Incentivos Estaduais e Federais',
       description: 'Elaboração de projetos e acompanhamento completo de pleitos para viabilização e concessão de incentivos fiscais da ZFM junto a superintendências e governos.',
       features: ['Projeto SUFRAMA (II, IPI, PIS/COFINS)', 'Projeto SEDECTI (Redução de ICMS)', 'Projetos SUDAM e SUDENE (Redução de 75% IRPJ)', 'Reinvestimento de 30% do IRPJ'],
-      image: "https://www.gov.br/suframa/pt-br/assuntos/noticias/suframa-vai-esclarecer-mudancas-nos-projetos-industriais/suframasite.jpg"
+      image: "https://enamvoamthbfimtsvgqa.supabase.co/storage/v1/object/public/Staff/bianca_premio.jpg"
     },
     {
       icon: <Briefcase className="w-8 h-8 text-accent" />,
@@ -101,7 +108,8 @@ export function Services() {
           </p>
         </div>
 
-        <div className="mx-auto slider-container pb-12">
+        {/* VERSÃO DESKTOP (100% INTACTA) */}
+        <div className="hidden md:block mx-auto slider-container pb-12">
           <style>{`
             .slider-container .slick-dots {
               bottom: -20px;
@@ -188,6 +196,68 @@ export function Services() {
               </div>
             ))}
           </Slider>
+        </div>
+
+        {/* VERSÃO MOBILE: Touch Snap Carousel Nativo */}
+        <div className="md:hidden">
+          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-6 no-scrollbar -mx-4">
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className="w-[85vw] max-w-[340px] shrink-0 snap-center bg-secondary rounded-2xl overflow-hidden border border-border shadow-xl flex flex-col justify-between"
+              >
+                {/* Imagem do Serviço */}
+                <div className="relative h-48 w-full overflow-hidden">
+                  <ImageWithFallback
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-secondary via-transparent to-transparent"></div>
+                  <div className="absolute top-3 left-3 bg-primary/90 p-2.5 rounded-xl border border-accent/30 backdrop-blur-md shadow-md">
+                    {service.icon}
+                  </div>
+                </div>
+
+                {/* Conteúdo */}
+                <div className="p-5 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h4 className="text-xl font-bold text-white mb-2 leading-tight">
+                      {service.title}
+                    </h4>
+                    <p className="text-white/80 text-xs sm:text-sm leading-relaxed mb-4">
+                      {service.description}
+                    </p>
+
+                    <div className="space-y-2 mb-6 bg-primary/40 p-3.5 rounded-xl border border-white/5">
+                      {service.features.map((feature, idx) => (
+                        <div key={idx} className="flex items-start gap-2 text-xs text-white/90">
+                          <svg className="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+                          </svg>
+                          <span className="leading-tight">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={() => window.open(`https://wa.me/5592992905623?text=${encodeURIComponent('Olá, gostaria de saber mais sobre o serviço de ' + service.title)}`, '_blank')}
+                    className="w-full py-3.5 px-4 bg-accent text-primary font-bold text-sm rounded-xl hover:bg-white transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-md"
+                  >
+                    Falar com Especialista
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex items-center justify-center gap-2 pt-2 text-xs text-white/50">
+            <span>← Deslize para ver todas as soluções →</span>
+          </div>
         </div>
       </div>
     </section>

@@ -43,7 +43,7 @@ export function Team() {
     {
       name: 'Igo Viana',
       role: 'Gerente de Projetos Industriais/Tributários',
-      description: 'Economista pela Universidade Federal do Amazonas (UFAM), especializado em incentisvos fiscais na ZFM, com mais de 10 anos de experiência e mais de 200 projetos aprovados entre os órgãos Sudam, Sedecti e Suframa.',
+      description: 'Economista pela Universidade Federal do Amazonas (UFAM), especializado em incentivos fiscais na ZFM, com mais de 10 anos de experiência e mais de 200 projetos aprovados entre os órgãos Sudam, Sedecti e Suframa.',
       image: igo
     },
     {
@@ -88,7 +88,8 @@ export function Team() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* VERSÃO DESKTOP (100% INTACTA) */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {teamMembers.map((member, index) => (
             <div
               key={index}
@@ -121,6 +122,48 @@ export function Team() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* VERSÃO MOBILE: Carrossel Horizontal de Consultores */}
+        <div className="md:hidden">
+          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-6 no-scrollbar -mx-4">
+            {teamMembers.map((member, index) => (
+              <div
+                key={index}
+                className="w-[78vw] max-w-[280px] shrink-0 snap-center bg-secondary rounded-2xl overflow-hidden border border-border shadow-xl flex flex-col"
+              >
+                <div className="h-64 w-full relative overflow-hidden bg-primary/40 flex items-center justify-center">
+                  {member.image ? (
+                    <ImageWithFallback 
+                      src={member.image} 
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-20 h-20 rounded-full bg-accent/15 border-2 border-accent/30 flex items-center justify-center text-accent text-2xl font-bold">
+                      {getInitials(member.name)}
+                    </div>
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-secondary via-transparent to-transparent"></div>
+                </div>
+                <div className="p-5 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h4 className="text-lg font-bold text-white mb-1">{member.name}</h4>
+                    <span className="inline-block px-2.5 py-0.5 bg-accent/15 text-accent text-xs font-semibold rounded-full border border-accent/30 mb-3">
+                      {member.role}
+                    </span>
+                    <p className="text-white/70 text-xs leading-relaxed line-clamp-4">
+                      {member.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex items-center justify-center gap-2 pt-2 text-xs text-white/50">
+            <span>← Deslize para conhecer a equipe →</span>
+          </div>
         </div>
 
         <div className="mt-16 text-center bg-secondary border border-border rounded-xl p-8 shadow-lg">

@@ -15,7 +15,8 @@ export function Footer() {
           <div>
             <h4 className="mb-4 text-accent">Serviços</h4>
             <ul className="space-y-2 text-sm text-white/80">
-              <li>Estudos de Viabilidade & PPB</li>
+              <li>Estudos de Viabilidade Econômica</li>
+              <li>Processo Produtivo Básico (PPB)</li>
               <li>Incentivos Estaduais e Federais</li>
               <li>Consultoria Econômica Permanente</li>
               <li>Auditoria e Consultoria Contábil</li>
